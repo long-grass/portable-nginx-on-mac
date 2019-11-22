@@ -5,6 +5,8 @@ echo "ip is now $ip"
 echo "address=/.test/$ip" > /usr/local/etc/dnsmasq.d/development.conf
 networksetup -setdnsservers Wi-Fi $ip 8.8.8.8
 sudo brew services restart dnsmasq
+sleep 3
 sudo killall -HUP mDNSResponder
 curl http://hello.test
+open -n -a "Firefox" --args "--new-window" "http://hello.test/web"
 
